@@ -15,7 +15,7 @@ routes.post('/sessions', SessionController.create);
 routes.get('/ongs', OngController.list);
 routes.post('/ongs', OngController.create);
 
-routes.get('/Profile/incidents', ProfileController.list);
+routes.get('/profile', ProfileController.list);
 //Rotas para os Casos  - Incidents
 routes.get('/incidents', IncidentController.list);
 routes.post('/incidents', IncidentController.create);

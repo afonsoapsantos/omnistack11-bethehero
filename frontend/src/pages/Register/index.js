@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import './style.css';
-import logoImg from '../../assets/logo.svg';
 import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
+
+import './style.css';
+import logoImg from '../../assets/logo.svg';
 
 import api from '../../services/api';
 
@@ -21,13 +22,17 @@ export default function Register(){
 
         const data = { name, email, whatsapp, city, uf };
 
-        const response = await api.post('ongs', data);
-
         try{
+            if( data.name === '' || data.email === '' || data.whatsapp === ''){
+                alert("Digite o nome, email e WhatsApp");
+                return;
+            }
+
+            const response = await api.post('ongs', data);
             alert(`Seu ID de acesso: ${response.data.id}`);
             history.push('/');
         } catch (err) {
-            alert('Erro no cadastro, tente novamente');
+            alert(`Erro no cadastro, tente novamente ${err}`);
         }
     }
 
